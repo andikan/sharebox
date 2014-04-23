@@ -1,29 +1,18 @@
-development:
-  adapter: mysql
-  encoding: utf8
-  reconnect: false
-  database: sharebox_development
+common: &common
+  adapter: postgresql
+  username: andikan
+  password: andy
+  encoding: unicode
   pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+
+development:
+  <<: *common
+  database: magicbox_development
 
 test:
-  adapter: mysql
-  encoding: utf8
-  reconnect: false
-  database: sharebox_test
-  pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  <<: *common
+  database: magicbox_test
 
 production:
-  adapter: mysql
-  encoding: utf8
-  reconnect: false
-  database: sharebox_production
-  pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  <<: *common
+  database: magicbox_production

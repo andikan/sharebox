@@ -1,5 +1,5 @@
 class Asset < ActiveRecord::Base
-  attr_accessible :user_id, :uploaded_file, :folder_id
+  # attr_accessible :user_id, :uploaded_file, :folder_id
 
   belongs_to :user
   belongs_to :folder
