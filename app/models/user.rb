@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
   # this is to make sure the id of the new user of which the email addresses already used to share folders by others, have access to those folders
   def check_and_assign_shared_ids_to_shared_folders
     # first check if the new user's email exists in any of the shared folder records
-    shared_folders_with_same_email = SharedFolder.find_all_by_shared_email(self.email)
+
+    shared_folders_with_same_email = SharedFolder.where(shared_email: self.email)
     
     if shared_folders_with_same_email
       # loop and update the shared user id with this new user id
