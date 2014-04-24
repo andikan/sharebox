@@ -94,35 +94,35 @@ a {
 }
 
 .asset_list_header, .asset_list, .asset_details {
-	width:800px;
-	font-weight:bold;
-	font-size:12px;
-	overflow:hidden;
+  width:800px;
+  font-weight:bold;
+  font-size:12px;
+  overflow:hidden;
 
 }
 .file_name_header, .file_name {
-	width:350px;
-	float:left;
-	padding-left:20px;
+  width:350px;
+  float:left;
+  padding-left:20px;
 }
 .file_size_header, .file_size {
-	width:100px;
-	float:left;
+  width:100px;
+  float:left;
 }
 .file_last_updated_header, .file_last_updated {
-	width:150px;
-	float:left;
+  width:150px;
+  float:left;
 }
 .asset_list {
-	padding:20px 0;
+  padding:20px 0;
 }
 .asset_details {
-	font-weight:normal;
-	height:25px;
-	line-height:25px;
-	border:1px solid #FFF;
-	width:790px;
-	color:#4F4F4F;
+  font-weight:normal;
+  height:25px;
+  line-height:25px;
+  border:1px solid #FFF;
+  width:790px;
+  color:#4F4F4F;
 }
 
 #menu {
@@ -160,26 +160,26 @@ a {
 }
 
 .folder  {
-	background:url("../images/folder.png") no-repeat scroll left center transparent;
+  background:url("../images/folder.png") no-repeat scroll left center transparent;
 }
 
 .file {
-	background:url("../images/file.png") no-repeat scroll left center transparent;
+  background:url("../images/file.png") no-repeat scroll left center transparent;
 }
 .folder.asset_details:hover, .shared_folder.asset_details:hover, .file.asset_details:hover  {
-	border:1px solid #DFDFDF;
+  border:1px solid #DFDFDF;
 }
 .folder.asset_details:hover  {
-	background:url("../images/folder.png") no-repeat scroll left center #EFEFEF;
+  background:url("../images/folder.png") no-repeat scroll left center #EFEFEF;
 }
 .shared_folder  {
-	background:url("../images/shared_folder.png") no-repeat scroll left center transparent;
+  background:url("../images/shared_folder.png") no-repeat scroll left center transparent;
 }
 .shared_folder.asset_details:hover  {
-	background:url("../images/shared_folder.png") no-repeat scroll left center #EFEFEF;
+  background:url("../images/shared_folder.png") no-repeat scroll left center #EFEFEF;
 }
 .file.asset_details:hover  {
-	background:url("../images/file.png") no-repeat scroll left center #EFEFEF;
+  background:url("../images/file.png") no-repeat scroll left center #EFEFEF;
 }
 
 .breadcrumbs {
@@ -192,30 +192,30 @@ a {
 }
 
 .actions {
-	float:right;
-	font-size:11px;
+  float:right;
+  font-size:11px;
 }
 .share, .rename, .download, .delete{
-	float:left;	
+  float:left; 
 }
 .asset_details .share a,.asset_details .rename a,.asset_details .download a,.asset_details .delete a{
-	border: 1px solid #CFE9FF;
+  border: 1px solid #CFE9FF;
     font-size: 11px;
     margin-left: 5px;
     padding: 0 2px;
 }
 .asset_details .share a:hover,.asset_details .rename a:hover,.asset_details .download a:hover,.asset_details .delete a:hover{
-	border:1px solid #8FCDFF;
+  border:1px solid #8FCDFF;
 }
 
 .asset_details .delete a{
-	color:#BF0B12;
-	border:1px solid #FFCFD1;
+  color:#BF0B12;
+  border:1px solid #FFCFD1;
 }
 
 .asset_details .delete a:hover{
-	color:#BF0B12;
-	border:1px solid #FF8F93;
+  color:#BF0B12;
+  border:1px solid #FF8F93;
 }
 
 .ui-button-text-only .ui-button-text {
