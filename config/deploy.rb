@@ -4,10 +4,6 @@ lock '3.2.1'
 set :application, 'MagicboxBackend'
 set :repo_url, 'git@bitbucket.org:magicbox/magicboxbackend.git'
 
-set :linked_files, %w{config/database.yml config/secrets.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
-
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
@@ -27,10 +23,10 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml config/facebook.yml config/secrets.yml}
 
 # Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -42,7 +38,7 @@ namespace :deploy do
   task :setup_config do
     on roles(:app) do
       upload!("config/database.yml", "#{shared_path}/config/database.yml")
-      # upload!("config/facebook.yml", "#{shared_path}/config/facebook.yml")
+      upload!("config/facebook.yml", "#{shared_path}/config/facebook.yml")
       upload!("config/secrets.yml", "#{shared_path}/config/secrets.yml")
       puts "Now edit the config files in #{shared_path}."
     end

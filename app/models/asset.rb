@@ -9,7 +9,7 @@ class Asset < ActiveRecord::Base
           :path => "assets/:id/:basename.:extension",
           :storage => :s3,
           :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
-          :bucket => "sharebox"
+          :bucket => "magicbox-production"
 
   validates_attachment_size :uploaded_file, :less_than => 10.megabytes
   validates_attachment_presence :uploaded_file

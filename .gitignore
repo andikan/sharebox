@@ -19,6 +19,7 @@
 /config/database.yml
 /config/facebook.yml
 /config/secrets.yml
+/aws
 
 # Ignore tmp file and upload files
 *.swp
