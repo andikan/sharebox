@@ -66,6 +66,7 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1', require: false
   gem 'capistrano-rails', '~> 1.1', require: false
   gem 'capistrano-rbenv', '~> 2.0', require: false
+  gem 'capistrano3-puma', require: false
 
   # https://github.com/dejan/rails_panel/tree/master/meta_request
   # http://blog.chh.tw/posts/better-way-to-watch-rails-log-rails-panel/
