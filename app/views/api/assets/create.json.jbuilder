@@ -10,4 +10,3 @@ json.prev_file_id @asset.prev_file_id
 json.is_large @asset.is_large
 json.is_modified @asset.is_modified
 json.file_fingerprint @asset.file_fingerprint
-json.updated_at @asset.updated_at
