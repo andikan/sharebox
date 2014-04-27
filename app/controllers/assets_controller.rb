@@ -20,7 +20,8 @@ class AssetsController < ApplicationController
   end
 
   def create
-    @asset = current_user.assets.new(params[:asset])
+    safe_params = params.require(:asset).permit(:uploaded_file)
+    @asset = current_user.assets.new(safe_params)
     if @asset.save
       flash[:notice] = "Successfully uploaded the file."
 

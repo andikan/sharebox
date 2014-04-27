@@ -1,0 +1,18 @@
+common: &common
+  adapter: postgresql
+  username: andikan
+  password: andy
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *common
+  database: magicbox_development
+
+test:
+  <<: *common
+  database: magicbox_test
+
+production:
+  <<: *common
+  database: magicbox_production
