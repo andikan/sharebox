@@ -21,7 +21,11 @@ Sharebox::Application.routes.draw do
 
   # api
   namespace :api do
-    get "ping", to: "home#ping" 
+    get "ping", to: "home#ping"
+
+    scope 'users' do
+      get "self", to: "users#self"
+    end
   end
 
   # The priority is based upon order of creation:

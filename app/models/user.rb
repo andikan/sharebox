@@ -101,7 +101,6 @@ class User < ActiveRecord::Base
         user.save if user.changed?
       end
     end
-    user.update_access_fields
     user
   end
 
@@ -112,7 +111,7 @@ class User < ActiveRecord::Base
       self.uid          = data["id"]
       self.name         = data["name"]
       self.gender       = data["gender"]     if data["gender"]
-      self.display_name = data["name"]       if self.display_name.nil?
+      self.displayname = data["name"]       if self.displayname.nil?
 
       if self.username.nil?
         if data["username"]
