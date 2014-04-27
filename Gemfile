@@ -56,11 +56,10 @@ gem "acts_as_tree"
 # for pagination
 gem 'kaminari'
 
+# app server
+gem 'puma'
 
 group :development do 
-  # app server
-  gem 'puma'
-  
   # Use Capistrano for deployment
   gem 'capistrano', '~> 3.1', require: false
   gem 'capistrano-bundler', '~> 1.1', require: false
