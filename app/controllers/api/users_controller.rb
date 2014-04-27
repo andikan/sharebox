@@ -3,6 +3,7 @@ class Api::UsersController < ApplicationController
   respond_to :json
 
   def self
+    logger.fatal @current_user.errors if @current_user.errors.any?
   end
 
   private
