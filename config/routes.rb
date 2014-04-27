@@ -19,6 +19,11 @@ Sharebox::Application.routes.draw do
   # for sharing the folder
   match "home/share" => "home#share", via: [:get, :post]
 
+  # api
+  namespace :api do
+    get "ping", to: "home#ping" 
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -20,11 +20,21 @@ ActiveRecord::Schema.define(version: 20120315042654) do
   create_table "assets", force: true do |t|
     t.integer  "user_id"
     t.integer  "folder_id"
+    t.string   "file_id"
+    t.string   "prev_file_id"
+    t.string   "checksum"
+    t.string   "url"
+    t.string   "path"
     t.string   "uploaded_file_file_name"
     t.string   "uploaded_file_content_type"
     t.integer  "uploaded_file_file_size"
-    t.hstore   "uploaded_file_meta"
     t.datetime "uploaded_file_updated_at"
+    t.datetime "deleted_at"
+    t.hstore   "data",                       default: "",    null: false
+    t.hstore   "uploaded_file_meta",         default: "",    null: false
+    t.hstore   "chunks",                     default: "{}",  null: false, array: true
+    t.boolean  "is_large",                   default: false
+    t.boolean  "is_modified"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
