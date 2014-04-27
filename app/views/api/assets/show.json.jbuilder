@@ -9,4 +9,5 @@ json.file_id @asset.file_id
 json.prev_file_id @asset.prev_file_id
 json.is_large @asset.is_large
 json.is_modified @asset.is_modified
+json.is_chunk @asset.is_chunk
 json.file_fingerprint @asset.file_fingerprint

@@ -18,11 +18,18 @@ class CreateAssets < ActiveRecord::Migration
       t.hstore  :chunks, array: true, default: '{}', null: false
       t.boolean :is_large, default: false
       t.boolean :is_modified, default: false
+      t.boolean :is_chunk, default: false
       t.timestamps
     end
 
     add_index :assets, :user_id
     add_index :assets, :folder_id
+    add_index :assets, :file_id
+    add_index :assets, :prev_file_id
+    add_index :assets, :is_large
+    add_index :assets, :is_modified
+    add_index :assets, :is_chunk
+    add_index :assets, :updated_at
   end
 
   def self.down

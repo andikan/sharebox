@@ -70,7 +70,7 @@ class AssetsController < ApplicationController
 
     if asset
       # Parse the URL for special characters first before downloading
-      data = open(asset.uploaded_file.url)
+      data = open(asset.s3_url)
       
       # use the send_data method to send the above bindary "data" as a file
       send_data data, :filename => asset.file_name

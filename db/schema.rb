@@ -30,11 +30,12 @@ ActiveRecord::Schema.define(version: 20140427100244) do
     t.integer  "uploaded_file_file_size"
     t.datetime "uploaded_file_updated_at"
     t.datetime "deleted_at"
-    t.hstore   "data",                       default: {},    null: false
-    t.hstore   "uploaded_file_meta",         default: {},    null: false
-    t.hstore   "chunks",                     default: [],    null: false, array: true
+    t.hstore   "data",                       default: "",    null: false
+    t.hstore   "uploaded_file_meta",         default: "",    null: false
+    t.hstore   "chunks",                     default: "{}",  null: false, array: true
     t.boolean  "is_large",                   default: false
     t.boolean  "is_modified",                default: false
+    t.boolean  "is_chunk",                   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "random_hex"
@@ -71,7 +72,7 @@ ActiveRecord::Schema.define(version: 20140427100244) do
   add_index "shared_folders", ["user_id"], name: "index_shared_folders_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false,              comment: "Email"
+    t.string   "email",                  default: "",   null: false,              comment: "Email"
     t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -89,8 +90,8 @@ ActiveRecord::Schema.define(version: 20140427100244) do
     t.string   "provider"
     t.string   "gender"
     t.string   "fb_token"
-    t.hstore   "data",                   default: {}, null: false
-    t.hstore   "mac_addresses",          default: [], null: false, array: true
+    t.hstore   "data",                   default: "",   null: false
+    t.hstore   "mac_addresses",          default: "{}", null: false, array: true
     t.datetime "current_access_at"
     t.datetime "last_access_at"
     t.datetime "latest_updated_at"

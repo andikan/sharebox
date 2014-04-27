@@ -7,8 +7,9 @@ class Api::AssetsController < ApplicationController
   end
 
   def create
-    safe_params = params.require(:file).permit(:uploaded_file, :path, :file_id, :prev_file_id, :checksum, :is_modified)
+    safe_params = params.require(:file).permit(:uploaded_file, :path, :file_id, :prev_file_id, :is_modified)
     logger.info safe_params.inspect
+    safe_params[:is_chunk] = true if safe_params[:uploaded_file].original_filename.split(".").last == "tmp"
     @asset = @current_user.assets.new(safe_params)
     render :json => {errors: @asset.errors}, :status => 500 unless @asset.save
   end
