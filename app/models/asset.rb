@@ -1,5 +1,5 @@
 class Asset < ActiveRecord::Base
-  # attr_accessible :user_id, :uploaded_file, :folder_id
+  validates :file_id, presence: true
 
   belongs_to :user
   belongs_to :folder
