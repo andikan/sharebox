@@ -16,7 +16,9 @@
 /tmp
 
 # Ignore sensitive configuration
-
+/config/database.yml
+/config/facebook.yml
+/config/secrets.yml
 
 # Ignore tmp file and upload files
 *.swp
