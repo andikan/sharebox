@@ -3,7 +3,7 @@ Sharebox::Application.routes.draw do
 
   resources :assets
 
-  devise_for :users
+  devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks" }
 
   #this route is for file downloads  
   match "assets/get/:id" => "assets#get", :as => "download", via: [:get, :post]

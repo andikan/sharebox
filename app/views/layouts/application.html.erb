@@ -15,14 +15,13 @@
       </div>
       <div id="login_user_status">
         <% if user_signed_in? %>
-          <%= current_user.email %>
+          Hello, <%= current_user.displayname %>
           |
           <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
         <% else %>
           <em>Not signed in.</em>
-          <%= link_to 'Sign in', new_user_session_path %>
-          or
-          <%= link_to 'Sign up', new_user_registration_path %>
+          
+          <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
         <% end %>
       </div>
     </div>

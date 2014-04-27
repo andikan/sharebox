@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  # attr_accessible :email, :name, :password, :password_confirmation, :remember_me
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   validates :email, :presence => true, :uniqueness => true
 
@@ -59,5 +58,76 @@ class User < ActiveRecord::Base
     end
     
     return false
+  end
+
+
+  # Facebook related
+  def self.find_for_facebook_oauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name   # assuming the user model has a name
+      user.displayname = auth.info.name
+      user.gender = auth.info.gender if auth.info.gender
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
+
+  def self.find_for_facebook_access_token(token)
+    user = User.where(:fb_token => token).first
+    
+    unless user
+      user = User.new(:fb_token => token)
+      user.update_attrs_from_facebook
+      
+      # find uid exist or not
+      exists_user = User.find_by(uid: user.uid)
+
+      if exists_user.nil?
+        user.provider = "facebook"
+        user.save
+      else
+        user = exists_user
+        user.update_column(:fb_token, token) unless user.fb_token == token || Rails.env.test?
+        user.save if user.changed?
+      end
+    end
+    user.update_access_fields
+    user
+  end
+
+  def update_attrs_from_facebook
+    begin
+      data = graph_api.get_object('me')
+      self.email        = data["email"]
+      self.uid          = data["id"]
+      self.name         = data["name"]
+      self.gender       = data["gender"]     if data["gender"]
+      self.display_name = data["name"]       if self.display_name.nil?
+
+      if self.username.nil?
+        if data["username"]
+          self.username = data["username"]
+        else
+          self.username = "fb_#{data["id"]}"
+        end
+      end
+    rescue Koala::Facebook::APIError => exc
+      logger.error "Error upating from facebook #{self.inspect} - #{exc.message}"
+    end
+  end
+
+  private
+  def graph_api
+    @graph ||= Koala::Facebook::API.new(self.fb_token)
   end
 end
