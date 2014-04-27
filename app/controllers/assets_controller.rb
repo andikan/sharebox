@@ -4,7 +4,7 @@ class AssetsController < ApplicationController
   before_filter :authenticate_user!  # authenticate for users before any methods is called
 
   def index
-    @assets = current_user.assets
+    @assets = current_user.assets.where("folder_id is null and is_chunk = false").order("uploaded_file_updated_at desc")
   end
 
   def show

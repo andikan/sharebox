@@ -3,7 +3,7 @@ class Api::AssetsController < ApplicationController
   respond_to :json
 
   def index
-    @assets = current_user.assets.order("updated_at DESC")
+    @assets = current_user.assets.where("folder_id is null and is_chunk = false").order("uploaded_file_updated_at desc")
   end
 
   def create

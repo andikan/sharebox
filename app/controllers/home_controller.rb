@@ -10,7 +10,7 @@ class HomeController < ApplicationController
       @folders = current_user.folders.roots
 
       # load current user's root files (assets) (which aren't in a folder)
-      @assets = current_user.assets.where("folder_id is NULL").order("uploaded_file_file_name desc")
+      @assets = current_user.assets.where("folder_id is null and is_chunk = false").order("uploaded_file_updated_at desc")
     end
   end
 
