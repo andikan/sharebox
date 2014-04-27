@@ -17,7 +17,7 @@ class CreateAssets < ActiveRecord::Migration
       t.hstore  :uploaded_file_meta, default: '', null: false
       t.hstore  :chunks, array: true, default: '{}', null: false
       t.boolean :is_large, default: false
-      t.boolean :is_modified
+      t.boolean :is_modified, default: false
       t.timestamps
     end
 

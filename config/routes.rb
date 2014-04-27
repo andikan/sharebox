@@ -26,6 +26,8 @@ Sharebox::Application.routes.draw do
     scope 'users' do
       get "self", to: "users#self"
     end
+
+    resources :files, controller: 'assets'
   end
 
   # The priority is based upon order of creation:

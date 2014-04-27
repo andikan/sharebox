@@ -6,7 +6,8 @@ class Asset < ActiveRecord::Base
 
   # set up "uploaded_file" field as attached_file (using Paperclip)
   has_attached_file :uploaded_file,
-          :path => "assets/:id/:basename.:extension",
+          :path => ":class/:hash.:extension",
+          :hash_secret => "magicbox_hash_secret",
           :storage => :s3,
           :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
           :bucket => "magicbox-production"
@@ -21,5 +22,21 @@ class Asset < ActiveRecord::Base
 
   def file_size
     uploaded_file_file_size
+  end
+
+  def file_content_type
+    uploaded_file_content_type
+  end
+
+  def file_updated_at
+    uploaded_file_updated_at
+  end
+
+  def file_fingerprint
+    uploaded_file_fingerprint
+  end
+
+  def s3_url
+    uploaded_file.expiring_url.split("?")[0]
   end
 end
