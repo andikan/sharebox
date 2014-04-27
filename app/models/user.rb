@@ -111,7 +111,8 @@ class User < ActiveRecord::Base
       self.uid          = data["id"]
       self.name         = data["name"]
       self.gender       = data["gender"]     if data["gender"]
-      self.displayname = data["name"]       if self.displayname.nil?
+      self.displayname  = data["name"]       if self.displayname.nil?
+      self.password     = Devise.friendly_token[0,20]
 
       if self.username.nil?
         if data["username"]
