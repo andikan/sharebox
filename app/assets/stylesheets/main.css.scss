@@ -1,5 +1,5 @@
 body {
-  background-color: #EFEFEF;
+  background-color: rgb(242, 241, 239);
   font-family: "Lucida Grande","Verdana","Arial","Bitstream Vera Sans",sans-serif;
   font-size: 14px;
 }
@@ -12,7 +12,7 @@ body {
 }
 
 .logo a {
-  color: #338DCF;
+  color: rgb(82, 179, 217);
   float: left;
   font-size: 48px;
   font-weight: bold;
@@ -39,7 +39,7 @@ a {
   margin: 0 auto;
   background-color: #FFF;
   padding: 20px 40px;
-  border: solid 1px #BFBFBF;
+  // border: solid 1px #BFBFBF;
 }
 
 #login_user_status {
