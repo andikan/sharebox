@@ -26,10 +26,12 @@ class Api::UsersController < ApplicationController
       @current_user = User.find_for_facebook_access_token(params[:access_token])
     end
 
+    logger.info @current_user.errors.inspect if @current_user.errors.any?
     @current_user
   end
 
   def authenticate!
-    render :json => { :error => "401 Unauthorized" }, :status => 410 unless current_user
+    render :json => { error: "401 Unauthorized" }, :status => 401 unless current_user
+    render :json => { errors: @current_user.errors }, :status => 500 if @current_user.errors.any?
   end
 end

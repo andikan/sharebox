@@ -12,7 +12,7 @@ class Asset < ActiveRecord::Base
           :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
           :bucket => "magicbox-production"
 
-  validates_attachment_size :uploaded_file, :less_than => 10.megabytes
+  validates_attachment_size :uploaded_file, :less_than => 150.megabytes
   validates_attachment_presence :uploaded_file
   do_not_validate_attachment_file_type :uploaded_file
   

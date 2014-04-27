@@ -41,6 +41,7 @@ class Api::AssetsController < ApplicationController
   end
 
   def authenticate!
-    render :json => { :error => "401 Unauthorized" }, :status => 410 unless current_user
+    render :json => { error: "401 Unauthorized" }, :status => 401 unless current_user
+    render :json => { errors: @current_user.errors }, :status => 500 if @current_user.errors.any?
   end
 end
